@@ -24,7 +24,7 @@
         {% if die == best %}
         <button type="button" class="btn btn-success">{{die}}</button>
         {% else %}
-        <button type="button" class="btn btn-secondary">{{die}}</button>
+        <button type="button" class="btn btn-info">{{die}}</button>
         {% endif %}
     {% endfor %}
 
@@ -34,6 +34,10 @@
 
 <h3>Résultat</h3>
 <p>{{res}}</p>
+
+{% if reduction %}
+<p><em>Le résultat a été dégradé de deux crans car la difficulté réduisait le nombre de dés à lancer.</em></p>
+{% endif %}
 
 {% endif %}
 {% endblock %}

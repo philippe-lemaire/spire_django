@@ -22,13 +22,14 @@ def index(request):
             difficulty = form.cleaned_data["difficulty"]
             dice = 1 + sum((skill, domain, mastery, equipment))
             # call the game logic function
-            pool, res, best = roll(dice, difficulty)
+            pool, res, best, reduction = roll(dice, difficulty)
             # build the context
             context = {
                 "form": form,
                 "pool": pool,
                 "res": res,
                 "best": best,
+                "reduction": reduction,
             }
 
     else:

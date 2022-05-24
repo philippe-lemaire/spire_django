@@ -4,14 +4,13 @@ import random
 def roll(dice, difficulty=0):
     """Rolls a dice number of d10s, keeps the best one, and returns the dice pool for display and the text result."""
     offset = 0
+    reduction = False
     dice -= difficulty
 
     if dice < 1:
         dice = 1
         offset = 2
-        print(
-            f"Difficulty over dice pool, rolling 1 die but the result will be degraded by 2 steps"
-        )
+        reduction = True
 
     pool = [random.randint(1, 10) for die in range(dice)]
     best = max(pool)
@@ -19,11 +18,11 @@ def roll(dice, difficulty=0):
     extra_stress = pool.count(10)
 
     result_ranges = [
-        "Critical failure. Fail, and take double stress.",
-        "Failure. Fail, and take stess.",
-        "Success at a cost. Succeed, but take stress.",
-        "Success. Succeed, and take no stress.",
-        f"Critical Success. Succeed dramatically, and increase outgoing stress dice by {extra_stress}.",
+        "Échec critique. L’action échoue, et vous subissez le double du stress infligé normalement.",
+        "Échec. L’action échoue, et vous subissez le stress.",
+        "Succès avec coût. L’action réussit, mais vous subissez le stress.",
+        "Succès. L’action réussit, et vous ne subissez aucun stress.",
+        f"Succès critique ! L’action réussit admirablement. Si vous infligez du stress, ajoutez un bonus de {extra_stress}.",
     ]
 
     if best == 1:
@@ -42,4 +41,4 @@ def roll(dice, difficulty=0):
 
     res = result_ranges[max(idx, 0)]
 
-    return pool, res, best
+    return pool, res, best, reduction
