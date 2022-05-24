@@ -16,12 +16,14 @@ def roll(dice, difficulty=0):
     pool = [random.randint(1, 10) for die in range(dice)]
     best = max(pool)
 
+    extra_stress = pool.count(10)
+
     result_ranges = [
         "Critical failure. Fail, and take double stress.",
         "Failure. Fail, and take stess.",
         "Success at a cost. Succeed, but take stress.",
         "Success. Succeed, and take no stress.",
-        "Critical Success. Succeed dramatically, and increase outgoing stress dice by 1 step.",
+        f"Critical Success. Succeed dramatically, and increase outgoing stress dice by {extra_stress}.",
     ]
 
     if best == 1:
@@ -40,8 +42,4 @@ def roll(dice, difficulty=0):
 
     res = result_ranges[max(idx, 0)]
 
-    return pool, res
-
-
-if __name__ == "__main__":
-    print(roll(dice=5, difficulty=3))
+    return pool, res, best
