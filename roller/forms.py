@@ -12,12 +12,7 @@ class RollForm(forms.Form):
         required=False,
     )
     mastery = forms.BooleanField(
-        label="Avez-vous la maîtrise sur l'action, la compétence ou le domaine concerné ?",
-        required=False,
-    )
-
-    equipment = forms.BooleanField(
-        label="Avez-vous un équipement supérieur qui s'applique ?",
+        label="Avez-vous la maîtrise sur l'action, la compétence ou le domaine concerné, ou un objet qui vous aide ?",
         required=False,
     )
 

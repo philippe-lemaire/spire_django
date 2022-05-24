@@ -18,9 +18,8 @@ def index(request):
             skill = form.cleaned_data["skill"]
             domain = form.cleaned_data["domain"]
             mastery = form.cleaned_data["mastery"]
-            equipment = form.cleaned_data["equipment"]
             difficulty = form.cleaned_data["difficulty"]
-            dice = 1 + sum((skill, domain, mastery, equipment))
+            dice = 1 + sum((skill, domain, mastery))
             # call the game logic function
             pool, res, best, offset = roll(dice, difficulty)
             # build the context
