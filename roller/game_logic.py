@@ -4,13 +4,11 @@ import random
 def roll(dice, difficulty=0):
     """Rolls a dice number of d10s, keeps the best one, and returns the dice pool for display and the text result."""
     offset = 0
-    reduction = False
     dice -= difficulty
 
     if dice < 1:
+        offset = 1 - dice
         dice = 1
-        offset = 2
-        reduction = True
 
     pool = [random.randint(1, 10) for die in range(dice)]
     best = max(pool)
@@ -41,4 +39,4 @@ def roll(dice, difficulty=0):
 
     res = result_ranges[max(idx, 0)]
 
-    return pool, res, best, reduction
+    return pool, res, best, offset

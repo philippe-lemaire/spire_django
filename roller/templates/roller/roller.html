@@ -35,8 +35,8 @@
 <h3>Résultat</h3>
 <p>{{res}}</p>
 
-{% if reduction %}
-<p><em>Le résultat a été dégradé de deux crans car la difficulté réduisait le nombre de dés à lancer.</em></p>
+{% if offset %}
+<p><em>Le résultat a été dégradé de {{offset}} cran(s) car la difficulté réduisait le nombre de dés à lancer.</em></p>
 {% endif %}
 
 {% endif %}
